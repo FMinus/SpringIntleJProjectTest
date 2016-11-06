@@ -1,0 +1,80 @@
+.spacer
+{
+    margin-top: 20px;
+}
+
+.spacer-2
+{
+    margin-top: 40px;
+}
+
+.spacer-all-sides
+{
+    margin: 20px;
+}
+.spacer-sides
+{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.spacer-sides-10
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.clickable
+{
+    cursor: pointer;
+    
+}
+.red-color
+{
+    background-color: red;
+}
+.green-color
+{
+    background-color: green;
+}
+.blue-color
+{
+    background-color: blue;
+}
+.error
+{
+    color: red;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak 
+{
+  display: none !important;
+}
+
+.center-me {
+  margin: 0 auto;
+}
+
+.center-vertical-parent {
+  position: relative;
+}
+.center-vertical-child {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.send-left
+{
+    float: right;
+}
+
+.panel-spacer
+{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.menu-link
+{
+    font-family: cursive;
+    
+}

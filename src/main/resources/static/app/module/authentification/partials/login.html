@@ -1,0 +1,44 @@
+<b>{{login.message}}</b>
+
+ 
+<div class="col-md-6 col-md-offset-3 spacer ">
+	<div class="panel panel-info">
+		<div class="panel panel-heading ng-cloak">
+			Login : {{test}} <a href="home.html" class="send-left">index</a>
+		</div>
+		<div class="panel panel-body">
+			<form class="pure-form pure-form-aligned">
+
+				<fieldset>
+					<div class="pure-control-group">
+						<label class="control-label" for="email">Email : </label> 
+						
+						<input type="text" id="email" class="form-control send-left"
+							placeholder="Votre Adresse Email" required="true" ng-model="login.userCredentials.username"
+						/>
+						
+					</div>
+					
+					<div class="pure-control-group spacer-2">
+						<label class="control-label" for="password">Mot De Passe :</label>
+						 
+						 <input type="text" id="password" class="form-control send-left"
+							placeholder="Votre Mot De Passe" required="true" ng-model="login.userCredentials.password"/>
+					</div>
+					
+					<div class="center-block">
+						<span ng-if="error" class="error center-block ng-cloak">{{error}}</span>
+					</div>
+					
+					<div class="col-md-6 col-md-offset-3 pure-controls spacer">
+						<button ng-click="login.login()" class="btn btn-success ">Login</button>
+						<a href="registerUser.html" class="btn btn-primary">Register</a>
+					</div>
+					
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
+ 
