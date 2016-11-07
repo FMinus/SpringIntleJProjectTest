@@ -2,6 +2,8 @@ package com.mainPackage.security.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.mainPackage.entity.User;
+import com.mainPackage.metier.UserMetier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mainPackage.security.jwt.JwtTokenUtil;
 import com.mainPackage.security.jwt.JwtUser;
 
+import java.util.List;
 
 
 @RestController
@@ -19,6 +22,9 @@ public class UserRestController
 {
 	@Value("${jwt.header}")
     private String tokenHeader;
+
+    @Autowired
+    private UserMetier userMetier;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -35,6 +41,16 @@ public class UserRestController
         return user;
     }
 
+    @RequestMapping(value = "allUsers", method = RequestMethod.GET)
+    public List<User> getAll()
+    {
+        return userMetier.listAllUsers();
+    }
 
 
+    @RequestMapping(value = "myTest", method = RequestMethod.GET)
+    public String myTest()
+    {
+        return "myTest";
+    }
 }

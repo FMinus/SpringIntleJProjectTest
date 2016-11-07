@@ -1,0 +1,33 @@
+<h><b> {{userAdmin.listName}} </b></h>
+
+<button ng-click="userAdmin.recherche()">retry</button>
+<div class="col-md-6 col-sm-6 spacer">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date Last Password Rest</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr ng-repeat="e in userAdmin.listUsers">
+
+            <td>{{e.username}}</td>
+            <td>{{e.firstname}}</td>
+            <td>{{e.lastname}}</td>
+            <td>{{e.lastPasswordResetDate|date:'yyyy-MM-dd'}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="container spacer">
+        <ul class="nav nav-pills">
+            <li class ="clickable" ng-repeat="p in userAdmin.pages track by $index" ng-class="{active:$index==userAdmin.pageCourante}">
+                <a ng-click="userAdmin.goToPage($index)">{{$index}}</a>
+            </li>
+        </ul>
+
+    </div>
+</div>

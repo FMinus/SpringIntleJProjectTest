@@ -2,9 +2,6 @@ define(['angular','angularAMD','ngRoute','cssInjector','app'],function(angularAM
 {	 
 	var appAuthentification = angular.module("appAuthentification",['ngRoute','angular.css.injector','app']);
 
-	 
-
-
 	return  appAuthentification;
 
 });

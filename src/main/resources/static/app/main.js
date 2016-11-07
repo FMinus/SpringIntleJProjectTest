@@ -1,5 +1,5 @@
 require.config({
-
+	urlArgs: "bust=" + (new Date()).getTime(),
 	paths: 
 	{
 		'angular': '../js/angular/angular.min',
@@ -13,6 +13,7 @@ require.config({
 		//****************** Modules Paths
 		'app': 'app',
 		'appAuthentification':'module/authentification/authentification',
+		'appUserAdmin': 'module/UserAdmin/appUserAdmin',
 		
 		'appConstants': 'appConstants',
 		
@@ -27,7 +28,7 @@ require.config({
 		'User': 'common/Models/userModel'
 		
 	},
-	waitSeconds: 1,
+	//waitSeconds: 1,
 	shim: 
 	{
 		//**************************Main Angular Modules
@@ -46,7 +47,10 @@ require.config({
 		
 		//Authentification Module : responsible for Authentification with the server and storing the token
 		'appAuthentification': {deps: ['angular','ngRoute','angularAMD','cssInjector','app']},
-		
+
+		//Authentification Module : responsible for Authentification with the server and storing the token
+		'appUserAdmin': {deps: ['angular','cssInjector','app']},
+
 		//applicatioon constants
 		'appConstants' : {deps:['app']},
 		
@@ -71,7 +75,7 @@ require.config({
             
 	},
 	deps: ['app','headerController']
-		
+		//hu
 });
 
 

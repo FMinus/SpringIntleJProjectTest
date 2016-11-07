@@ -24,20 +24,26 @@ define(['app'], function(app)
 		return service;
 
 		// implementation
-		function getRequest(url, header)
+		function getRequest(url, token)
 		{
 
 			// custom Promise
 			// Initial Deferred object using $q.defer().
 			var def = $q.defer();
-
+			//var header = createAuthorizationTokenHeader(token);
+			console.log("in the service"+token);
 			var req =
 			{
 				method : 'GET',
 				url : url,
-				contentType : "application/json; charset=utf-8",
-				headers : header,
-				dataType : "json"
+				headers:
+				{
+					contentType : "application/json; charset=utf-8",
+					Authorization: token
+				}
+
+
+				,dataType : "json"
 			}
 
 			$http(req).then(function(data)
@@ -98,7 +104,7 @@ define(['app'], function(app)
 		function createAuthorizationTokenHeader(token)
 		{
 			if (token) 
-				return {"Authorization" : token};					
+				return {"Authorization" : token};
 			else 
 				return {};
 		}

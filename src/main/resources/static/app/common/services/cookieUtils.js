@@ -2,9 +2,9 @@ define(['app'], function(app)
 {
 	app.factory('cookieUtils', cookieUtils);
 
-	cookieUtils.$inject = ['$cookies'];
+	cookieUtils.$inject = ['$cookieStore'];
 
-	function cookieUtils($cookies)
+	function cookieUtils($cookieStore)
 	{
 		
 
@@ -18,23 +18,22 @@ define(['app'], function(app)
 
 		return service;
 
-		var cookie = {};
+		//var cookie = {};
 
 		// ***************implementation
 		function getCookie()
 		{
-			cookie = $cookies.get('currentUser');
-            return cookie;
+			return $cookieStore.get('currentUser');
 		}
 
 		function setCookie(token)
 		{
-			 $cookies.put('currentUser',token);
+			$cookieStore.put('currentUser',token);
 		}
 		
 		function removeCookie()
 		{
-			$cookies.remove("currentUser");
+			$cookieStore.remove("currentUser");
 		}
 	}
 

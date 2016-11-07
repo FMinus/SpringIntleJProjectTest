@@ -76,9 +76,9 @@ public class UserServiceTest
 		
 		
 		
-		User admin = userMetier.findByUsername("admin");
-		User user = userMetier.findByUsername("user");
-		User disabled = userMetier.findByUsername("disabled");
+		User admin = userMetier.findOneByUsername("admin");
+		User user = userMetier.findOneByUsername("user");
+		User disabled = userMetier.findOneByUsername("disabled");
 		
 		/* adding admin acount */
 		if(admin == null)

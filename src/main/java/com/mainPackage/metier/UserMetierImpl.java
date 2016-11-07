@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mainPackage.dao.UserRepository;
@@ -24,13 +26,14 @@ public class UserMetierImpl implements UserMetier
 	}
 
 	@Override
-	public User findByUsername(String username) {
+	public User findOneByUsername(String username) {
 		return userRespository.findByUsername(username);
 	}
 	
 	@Override
 	public User grantAuthority2User(Authority auth, User user) 
 	{
+		//TODO use streams
 		//List<User> listUsers;
 		List<Authority> listAuth;
 		
@@ -52,10 +55,30 @@ public class UserMetierImpl implements UserMetier
 		
 		return userRespository.save(user);
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public List<User> listAllUsers()
+	{
+		return userRespository.findAll();
+	}
+
+	@Override
+	public List<User> findUsers(String mc)
+	{
+		return userRespository.findUsersLikeList(mc);
+	}
+
+	@Override
+	public Page<User> pageAllUsers(Pageable pgbl)
+	{
+		return userRespository.findAllUsers(pgbl);
+	}
+
+	@Override
+	public Page<User> findUsers(Pageable pgbl, String mc)
+	{
+		return userRespository.findUsersLikePage(mc,pgbl);
+	}
+
 
 }

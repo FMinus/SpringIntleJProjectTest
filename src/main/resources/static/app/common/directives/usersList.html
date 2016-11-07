@@ -1,0 +1,35 @@
+<h><b> {{userAdmin.listName}} </b></h>
+
+<form class="pure-form pure-form-aligned">
+    <div class="pure-control-group">
+        <label>Mot Clé : </label>
+        <input type="text" ng-model="controller.motCle"/>
+        <button class="btn btn-success" ng-click="recherche()"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+</form>
+
+<div class="col-md-6 col-sm-6 spacer">
+    <table class="table table-striped">
+        <thead>
+        <tr ng-repeat="header in controller.headers">
+            <th>{{header}}</th>
+        </tr>
+
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="element in controller.listUsers">
+            <td ng-repeat="header in controller.headers track by $index">{{element.header}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="container spacer">
+        <ul class="nav nav-pills">
+            <li class ="clickable" ng-repeat="p in userAdmin.pages track by $index" ng-class="{active:$index==userAdmin.pageCourante}">
+                <a ng-click="userAdmin.goToPage($index)">{{$index}}</a>
+            </li>
+        </ul>
+
+    </div>
+</div>

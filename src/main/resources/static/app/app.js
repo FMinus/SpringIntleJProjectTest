@@ -37,6 +37,15 @@ define(['angular','angularAMD','ngRoute','ngCookies'],function(angular,angularAM
                 controllerUrl: '/app/module/authentification/controllers/registerUserController.js',
 
             }))
+            .when('/users',angularAMD.route(
+            {
+            	title : 'Users',
+                controller : 'listUsersController',
+                controllerAs: 'userAdmin',
+                templateUrl: '/app/module/UserAdmin/partials/usersList.html',
+                controllerUrl: '/app/module/UserAdmin/controllers/listUsersController.js',
+
+            }))
             .otherwise({
                 redirectTo : '/error'
             });

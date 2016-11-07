@@ -6,11 +6,11 @@ define(['appAuthentification', 'cssLoader', 'angularAMD', 'restRequester','cooki
 
 			appAuthentification.controller('loginController', loginController);
 
-			loginController.$inject = ['cssLoader', 'restRequester','cookieUtils','$location','User'];
+			loginController.$inject = ['cssLoader', 'restRequester','cookieUtils','$location','User','$rootScope'];
 
 			// angularAMD.bootstrap(appRoot.appAuthentification);
 
-			function loginController(cssLoader, restRequester,cookieUtils,$location,User)
+			function loginController(cssLoader, restRequester,cookieUtils,$location,User,$rootScope)
 			{
 				var ayoub = new User("minus","password","ayoub","lastname","mail@gmail.com",true,new Date(),"avatar",[{"name":"user"},{"name":"admin"}]);
 				//console.log(ayoub.getAuthorities());
@@ -33,16 +33,13 @@ define(['appAuthentification', 'cssLoader', 'angularAMD', 'restRequester','cooki
 					restRequester.postRequest("/auth","" ,vm.userCredentials,true).then(
 							function(data)
 							{
-
 								vm.token = data.data.token;
+								cookieUtils.setCookie(vm.token);
+								$rootScope.token = vm.token;
+								console.log("token "+vm.token);
 
-								console.log("path "+$location.url());
-								//console.log(vm.token);
+								$location.path('/users');
 
-								$location.path('/back');
-
-								// $scope.getUserInformation();
-								//$scope.loggedIn = true;
 							}, function(data)
 							{
 								console.log("failed");
